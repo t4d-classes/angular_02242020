@@ -1,16 +1,8 @@
-<app-tool-header headerText="Color Tool"></app-tool-header>
 <app-tool-header [headerText]="headerText"></app-tool-header>
 <ul>
   <li *ngFor="let color of colors">
     {{color}}
   </li>
 </ul>
-<form [formGroup]="colorForm">
-  <div>
-    <label for="color-input">Color:</label>
-    <input type="text" id="color-input"
-      formControlName="color" />
-  </div>
-  <button type="button" (click)="addColor()">
-    Add Color</button>
-</form>
+<app-color-form buttonText="Add Color"
+  (submitColor)="doAddColor($event)"></app-color-form>
