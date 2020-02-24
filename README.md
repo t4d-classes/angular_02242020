@@ -1,4 +1,4 @@
-# Welcome to Advanced Angular Class
+# Welcome to the Advanced Angular Class
 
 ## Instructor
 
