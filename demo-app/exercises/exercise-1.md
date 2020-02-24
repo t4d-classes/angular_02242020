@@ -4,7 +4,11 @@ GitHub URL: [https://github.com/t4d-classes/angular_02242020](https://github.com
 
 1. Create a new module named Car Tool.
 
+Ex: ng generate module color-tool
+
 2. Create a new component named Car Home.
+
+Ex: ng generate component color-tool/components/color-home
 
 3. Within the Car Home component, construct an array of car objects. Each car object should have the following properties:
 
