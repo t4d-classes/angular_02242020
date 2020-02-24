@@ -6,3 +6,12 @@
     {{color}}
   </li>
 </ul>
+<form [formGroup]="colorForm">
+  <div>
+    <label for="color-input">Color:</label>
+    <input type="text" id="color-input"
+      formControlName="color" />
+  </div>
+  <button type="button" (click)="addColor()">
+    Add Color</button>
+</form>
