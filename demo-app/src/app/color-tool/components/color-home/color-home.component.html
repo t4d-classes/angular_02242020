@@ -1,6 +1,5 @@
-<header>
-  <h1>{{headerText}}</h1>
-</header>
+<app-tool-header headerText="Color Tool"></app-tool-header>
+<app-tool-header [headerText]="headerText"></app-tool-header>
 <ul>
   <li *ngFor="let color of colors">
     {{color}}
