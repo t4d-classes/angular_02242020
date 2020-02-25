@@ -10,7 +10,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="app-car-view-row" *ngFor="let car of sortedCars"
-      [car]="car" (deleteCar)="deleteCar.emit($event)"></tr>
+    <ng-container *ngFor="let car of sortedCars">
+      <tr class="app-car-view-row" *ngIf="car.id !== editCarId"
+        [car]="car" (editCar)="editCar.emit($event)" (deleteCar)="deleteCar.emit($event)"></tr>
+      <tr class="app-car-edit-row" *ngIf="car.id === editCarId"
+        [car]="car" (saveCar)="saveCar.emit($event)" (cancelCar)="cancelCar.emit()"></tr>
+    </ng-container>
   </tbody>
 </table>
