@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Car } from '../../models/car';
+import { CarsService } from '../../services/cars.service';
 
 @Component({
   selector: 'app-car-home',
@@ -9,31 +10,37 @@ import { Car } from '../../models/car';
 })
 export class CarHomeComponent implements OnInit {
 
-  cars: Car[] = [
-    { id: 1, make: 'Ford', model: 'Fusion Hybrid', year: 2019, color: 'blue', price: 45000 },
-    { id: 2, make: 'Tesla', model: 'S', year: 2018, color: 'red', price: 100000 },
-  ];
+  cars: Car[] = [];
 
   editCarId = -1;
 
-  constructor() { }
+  constructor(private carsSvc: CarsService) { }
 
   ngOnInit(): void {
+    this.cars = this.carsSvc.all();
   }
 
   doAppendCar(car: Car) {
-    this.cars = this.cars.concat({
-      ...car,
-      id: Math.max(...this.cars.map(c => c.id), 0) + 1,
-    });
+    this.cars = this.carsSvc.append(car).all();
+    this.editCarId = -1;
   }
 
   doRemoveCar(carId: number) {
-    this.cars = this.cars.filter(c => c.id !== carId);
+    this.cars = this.carsSvc.remove(carId).all();
+    this.editCarId = -1;
   }
 
   doEditCar(carId: number) {
     this.editCarId = carId;
+  }
+
+  doReplaceCar(car: Car) {
+    this.cars = this.carsSvc.replace(car).all();
+    this.editCarId = -1;
+  }
+
+  doCancelCar() {
+    this.editCarId = -1;
   }
 
 }
