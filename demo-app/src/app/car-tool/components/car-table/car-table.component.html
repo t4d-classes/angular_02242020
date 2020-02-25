@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th><a (click)="doSort('id')">Id</a></th>
+      <th><a (click)="doSort('make')">Make</a></th>
+      <th><a (click)="doSort('model')">Model</a></th>
+      <th><a (click)="doSort('year')">Year</a></th>
+      <th><a (click)="doSort('color')">Color</a></th>
+      <th><a (click)="doSort('price')">Price</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="app-car-view-row" *ngFor="let car of sortedCars"
+      [car]="car" (deleteCar)="deleteCar.emit($event)"></tr>
+  </tbody>
+</table>
