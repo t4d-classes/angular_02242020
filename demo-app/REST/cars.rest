@@ -1,0 +1,16 @@
+
+
+GET http://localhost:4250/cars HTTP/1.1
+
+###
+
+POST http://localhost:4250/cars HTTP/1.1
+Content-Type: application/json
+
+{
+  "make": "Telsa",
+  "model": "S",
+  "year": 2020,
+  "color": "red",
+  "price": 5000
+}

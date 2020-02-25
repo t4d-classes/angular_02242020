@@ -1,0 +1,36 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "make": "Ford",
+      "model": "Fusion Hybrid",
+      "year": 2019,
+      "color": "blue",
+      "price": 45000
+    },
+    {
+      "id": 2,
+      "make": "Tesla",
+      "model": "S",
+      "year": 2018,
+      "color": "red",
+      "price": 100000
+    },
+    {
+      "make": "Telsa",
+      "model": "S",
+      "year": 2020,
+      "color": "red",
+      "price": 5000,
+      "id": 3
+    },
+    {
+      "make": "Mercedes",
+      "model": "350",
+      "year": 2019,
+      "color": "red",
+      "price": 55000,
+      "id": 4
+    }
+  ]
+}

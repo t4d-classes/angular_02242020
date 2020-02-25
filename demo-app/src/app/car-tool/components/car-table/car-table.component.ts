@@ -9,36 +9,14 @@ import { Car } from '../../models/car';
 })
 export class CarTableComponent implements OnInit {
 
-  sortColName = '';
-
   @Input()
   cars: Car[] = [];
 
   @Input()
   editCarId = -1;
 
-  get sortedCars() {
-    if (this.sortColName.length > 0) {
-
-      return this.cars.concat().sort((a: Car, b: Car) => {
-
-        const aValue = String(a[this.sortColName]).toUpperCase();
-        const bValue = String(b[this.sortColName]).toUpperCase();
-
-        if (aValue < bValue) {
-          return -1;
-        } else if (aValue > bValue) {
-          return 1;
-        } else {
-          return 0;
-        }
-
-      });
-
-    } else {
-      return this.cars;
-    }
-  }
+  @Output()
+  sortCars = new EventEmitter<string>();
 
   @Output()
   editCar = new EventEmitter<number>();
@@ -59,9 +37,7 @@ export class CarTableComponent implements OnInit {
   }
 
   doSort(colName: string) {
-    this.sortColName = colName;
+    this.sortCars.emit(colName);
   }
-
-
 
 }
