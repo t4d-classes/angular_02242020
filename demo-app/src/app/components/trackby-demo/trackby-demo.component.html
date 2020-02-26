@@ -1,0 +1,23 @@
+
+
+<!-- <ul>
+  <li *ngFor="let color of colors; trackBy: colorKey">{{color.name}}</li>
+</ul> -->
+
+<!-- <ul>
+  <li *ngFor="let color of colors">{{color.name}}</li>
+</ul> -->
+
+<!-- <ul>
+  <ng-template ngFor [ngForOf]="colors" let-color>
+    <li>{{color.name}}</li>
+    <li>{{color.name | uppercase}}</li>
+  </ng-template>
+</ul> -->
+
+<ul>
+  <ng-container *ngFor="let color of colors">
+    <li>{{color.name}}</li>
+    <li>{{color.name | uppercase}}</li>
+  </ng-container>
+</ul>

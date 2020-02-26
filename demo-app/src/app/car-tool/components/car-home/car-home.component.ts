@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { Car } from '../../models/car';
 import { CarsService } from '../../services/cars.service';
@@ -16,12 +18,20 @@ export class CarHomeComponent implements OnInit {
 
   sortColName = '';
 
+  updateCars = {
+    next: cars => {
+      this.cars = cars;
+      this.editCarId = -1;
+    },
+    error: err => {
+      console.log(err);
+    },
+  };
+
   constructor(public carsSvc: CarsService) { }
 
   ngOnInit(): void {
-    this.carsSvc.all().then(cars => {
-      this.cars = cars;
-    });
+    this.refreshCars();
   }
 
   doSortCars(sortColName: string) {
@@ -29,24 +39,17 @@ export class CarHomeComponent implements OnInit {
     this.refreshCars();
   }
 
-  refreshCars() {
-    return this.carsSvc.all(this.sortColName).then(cars => {
-      this.cars = cars;
-    });
+  refreshCars(o: Observable<any> = null) {
+    (!o ? of([]) : o).pipe(switchMap(() => this.carsSvc.all(this.sortColName)))
+      .subscribe(this.updateCars);
   }
 
   doAppendCar(car: Car) {
-    this.carsSvc
-      .append(car)
-      .then(() => this.refreshCars());
-    this.editCarId = -1;
+    this.refreshCars(this.carsSvc.append(car));
   }
 
   doRemoveCar(carId: number) {
-    this.carsSvc
-      .remove(carId)
-      .then(() => this.refreshCars());
-    this.editCarId = -1;
+    this.refreshCars(this.carsSvc.remove(carId));
   }
 
   doEditCar(carId: number) {
@@ -54,10 +57,7 @@ export class CarHomeComponent implements OnInit {
   }
 
   doReplaceCar(car: Car) {
-    this.carsSvc
-      .replace(car)
-      .then(() => this.refreshCars());
-    this.editCarId = -1;
+    this.refreshCars(this.carsSvc.replace(car));
   }
 
   doCancelCar() {

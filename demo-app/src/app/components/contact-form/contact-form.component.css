@@ -1,0 +1,11 @@
+/* input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+input + span {
+  display: none;
+}
+
+input.ng-invalid.ng-touched + span {
+  display: initial;
+} */

@@ -1,0 +1,24 @@
+<form [formGroup]="contactForm">
+
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <span *ngIf="nameValid">Please enter your name!</span>
+  </div>
+
+  <div>
+    <label>Age</label>
+    <input type="number" formControlName="age">
+  </div>
+
+  <div>
+    <label>Phone</label>
+    <input type="text" formControlName="phone">
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="text" formControlName="email">
+  </div>
+
+</form>
