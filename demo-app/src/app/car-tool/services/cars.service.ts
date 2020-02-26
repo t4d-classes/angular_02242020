@@ -13,7 +13,7 @@ export class CarsService {
   all(sortColName = '') {
     if (sortColName.length > 0) {
       return this.httpClient
-        .get<Car[]>('http://localhost:4250/cars?_sort=' + sortColName)
+        .get<Car[]>('http://localhost:4250/cars?_sort=' + encodeURIComponent(sortColName))
         .toPromise();
     } else {
       return this.httpClient
