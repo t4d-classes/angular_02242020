@@ -23,9 +23,9 @@ Breaks:
 
 ### JavaScript/TypeScript content will be included as needed in the class
 
-- Day 1 - Build a Complete Application using Components, Pipes, Reactive Forms, Services and a REST API
-- Day 2 - Advanced Angular CLI, Advanced Components, Advanced Services, Asynchronous Programming, RxJS
-- Day 3 - Routing, NgRX Demo, Apollo Demo, Other Topics
+- Day 1 - Build a Complete Application using Components, Pipes, Reactive Forms
+- Day 2 - Asynchronous Programming, Promises, Services, HttpClient
+- Day 3 - RxJS, Advanced Services, Advanced Components, Advanced Angular CLI, NgRX Demo, Apollo Demo
 
 ## Requirements
 
