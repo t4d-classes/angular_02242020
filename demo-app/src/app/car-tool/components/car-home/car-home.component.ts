@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Car } from '../../models/car';
 import { CarsService } from '../../services/cars.service';
@@ -8,11 +8,13 @@ import { CarsService } from '../../services/cars.service';
   templateUrl: './car-home.component.html',
   styleUrls: ['./car-home.component.css']
 })
-export class CarHomeComponent implements OnInit, DoCheck {
+export class CarHomeComponent implements OnInit {
 
   cars: Car[] = [];
 
   editCarId = -1;
+
+  sortColName = '';
 
   constructor(public carsSvc: CarsService) { }
 
@@ -22,18 +24,13 @@ export class CarHomeComponent implements OnInit, DoCheck {
     });
   }
 
-  ngDoCheck() {
-    console.log('do check');
-  }
-
   doSortCars(sortColName: string) {
-    this.carsSvc.setSortColName(sortColName);
+    this.sortColName = sortColName;
     this.refreshCars();
   }
 
-
   refreshCars() {
-    return this.carsSvc.all().then(cars => {
+    return this.carsSvc.all(this.sortColName).then(cars => {
       this.cars = cars;
     });
   }

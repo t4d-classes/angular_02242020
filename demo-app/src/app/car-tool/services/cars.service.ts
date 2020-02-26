@@ -8,18 +8,12 @@ import { Car } from '../models/car';
 })
 export class CarsService {
 
-  private sortColName = '';
-
   constructor(private httpClient: HttpClient) { }
 
-  setSortColName(sortColName: string) {
-    this.sortColName = sortColName;
-  }
-
-  all() {
-    if (this.sortColName.length > 0) {
+  all(sortColName = '') {
+    if (sortColName.length > 0) {
       return this.httpClient
-        .get<Car[]>('http://localhost:4250/cars?_sort=' + this.sortColName)
+        .get<Car[]>('http://localhost:4250/cars?_sort=' + sortColName)
         .toPromise();
     } else {
       return this.httpClient
