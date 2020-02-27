@@ -1,5 +1,7 @@
 <form [formGroup]="contactForm">
 
+  <div>{{contactForm.errors | json}}</div>
+
   <div>
     <label>Name</label>
     <input type="text" formControlName="name">
@@ -20,5 +22,11 @@
     <label>Email</label>
     <input type="text" formControlName="email">
   </div>
+
+  <div>
+    <label>Color</label>
+    <input type="text" formControlName="color">
+  </div>
+
 
 </form>

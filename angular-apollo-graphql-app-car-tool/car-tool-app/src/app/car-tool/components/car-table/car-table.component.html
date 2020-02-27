@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th><a href="#" (click)="doSort('id')">Id</a></th>
+      <th><a href="#" (click)="doSort('make')">Make</a></th>
+      <th><a href="#" (click)="doSort('model')">Model</a></th>
+      <th><a href="#" (click)="doSort('year')">Year</a></th>
+      <th><a href="#" (click)="doSort('color')">Color</a></th>
+      <th><a href="#" (click)="doSort('price')">Price</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let car of sortedCars">
+      <tr class="app-car-view-row" *ngIf="car.id !== editCarId"
+        [car]="car" (editCar)="editCar.emit($event)" (deleteCar)="deleteCar.emit($event)"></tr>
+      <tr class="app-car-edit-row" *ngIf="car.id === editCarId"
+        [car]="car" (saveCar)="saveCar.emit($event)" (cancelCar)="cancelCar.emit()"></tr>
+    </ng-container>
+  </tbody>
+</table>

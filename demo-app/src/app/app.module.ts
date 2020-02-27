@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ColorToolModule } from './color-tool/color-tool.module';
 import { CarToolModule } from './car-tool/car-tool.module';
@@ -25,7 +26,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   imports: [
     BrowserModule, ColorToolModule,
     CarToolModule, SharedModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
